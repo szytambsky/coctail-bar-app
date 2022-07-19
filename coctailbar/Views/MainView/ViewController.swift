@@ -22,9 +22,10 @@ class ViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = Appearance.mainBackgroundColor
         cv.delegate = self
         cv.dataSource = self
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: drinkCellId)
+        cv.register(DrinkCell.self, forCellWithReuseIdentifier: drinkCellId)
         return cv
     }()
     
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = Appearance.mainBackgroundColor
         configureLayout()
         configureProperties()
     }
@@ -75,8 +76,8 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: drinkCellId, for: indexPath) as! UICollectionViewCell
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: drinkCellId, for: indexPath) as! DrinkCell
+        //cell.backgroundColor = .red
         return cell
     }
 }
@@ -84,5 +85,7 @@ extension ViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: ((collectionView.frame.width / 2) - Appearance.drinkCellPaddingBetween), height: 200)
+    }
 }
