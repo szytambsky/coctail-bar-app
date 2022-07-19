@@ -37,6 +37,11 @@ class ViewController: UIViewController {
         configureProperties()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     // MARK: - UI
     private func configureProperties() {
     }
@@ -68,7 +73,8 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        let drinkDetailViewController = DrinkDetailViewController()
+        navigationController?.pushViewController(drinkDetailViewController, animated: true)
     }
 }
 
