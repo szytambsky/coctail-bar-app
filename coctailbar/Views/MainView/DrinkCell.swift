@@ -47,11 +47,17 @@ class DrinkCell: UICollectionViewCell {
         
         addSubview(drinkImageView)
         drinkImageView.centerX(inView: self)
-        drinkImageView.anchor(left: leftAnchor, right: rightAnchor, paddingLeft: 0, paddingRight: 0, height: 150)
+        drinkImageView.anchor(left: leftAnchor,
+                              right: rightAnchor,
+                              paddingLeft: 0,
+                              paddingRight: 0,
+                              height: 150)
         
         addSubview(nameLabel)
         nameLabel.centerX(inView: self)
-        nameLabel.anchor(top: drinkImageView.bottomAnchor, paddingTop: 4, width: self.frame.width - Appearance.drinkCellLabelPadding)
+        nameLabel.anchor(top: drinkImageView.bottomAnchor,
+                         paddingTop: 4,
+                         width: self.frame.width - Appearance.drinkCellLabelPadding)
     }
     
 }

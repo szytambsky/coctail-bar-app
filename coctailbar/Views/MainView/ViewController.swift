@@ -33,8 +33,6 @@ class ViewController: UIViewController {
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = Appearance.mainBackgroundColor
         configureLayout()
         configureProperties()
     }
@@ -44,6 +42,12 @@ class ViewController: UIViewController {
     }
     
     private func configureLayout() {
+        view.backgroundColor = Appearance.mainBackgroundColor
+        
+        navigationItem.searchController = searchController
+        navigationItem.title = "Coctail finder"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         view.addSubview(collectionView)
         collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                               left: view.leftAnchor,

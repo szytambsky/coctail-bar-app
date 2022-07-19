@@ -18,6 +18,7 @@
 		C243C4302886D1D400318331 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C42F2886D1D400318331 /* UIViewExtensions.swift */; };
 		C243C4322886D25400318331 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C4312886D25400318331 /* Appearance.swift */; };
 		C243C4362886DA8700318331 /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C4352886DA8700318331 /* DrinkCell.swift */; };
+		C243C4392886EA7200318331 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C4382886EA7200318331 /* DrinkDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C243C42F2886D1D400318331 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		C243C4312886D25400318331 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		C243C4352886DA8700318331 /* DrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCell.swift; sourceTree = "<group>"; };
+		C243C4382886EA7200318331 /* DrinkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 		C243C4332886DA1500318331 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C243C4372886EA2B00318331 /* DrinkDetailView */,
 				C243C4342886DA2000318331 /* MainView */,
 			);
 			path = Views;
@@ -120,6 +123,14 @@
 				C243C4352886DA8700318331 /* DrinkCell.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		C243C4372886EA2B00318331 /* DrinkDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				C243C4382886EA7200318331 /* DrinkDetailViewController.swift */,
+			);
+			path = DrinkDetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				C243C4322886D25400318331 /* Appearance.swift in Sources */,
 				C243C4302886D1D400318331 /* UIViewExtensions.swift in Sources */,
 				C2274EA2288573C800C6A7C0 /* SceneDelegate.swift in Sources */,
+				C243C4392886EA7200318331 /* DrinkDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
