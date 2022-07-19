@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		138FEB69958CCEB26FD74F65 /* Pods_coctailbar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD7D4D27BB5621E42A409A5 /* Pods_coctailbar.framework */; };
 		C2274EA0288573C800C6A7C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2274E9F288573C800C6A7C0 /* AppDelegate.swift */; };
 		C2274EA2288573C800C6A7C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2274EA1288573C800C6A7C0 /* SceneDelegate.swift */; };
 		C2274EA4288573C800C6A7C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2274EA3288573C800C6A7C0 /* ViewController.swift */; };
@@ -14,14 +15,16 @@
 		C2274EA9288573CA00C6A7C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2274EA8288573CA00C6A7C0 /* Assets.xcassets */; };
 		C2274EAC288573CA00C6A7C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2274EAA288573CA00C6A7C0 /* LaunchScreen.storyboard */; };
 		C243C4282886B50700318331 /* DrinkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C4272886B50700318331 /* DrinkResponse.swift */; };
-		C243C42D2886BDEB00318331 /* CoctailAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C42C2886BDEB00318331 /* CoctailAPIService.swift */; };
 		C243C4302886D1D400318331 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C42F2886D1D400318331 /* UIViewExtensions.swift */; };
 		C243C4322886D25400318331 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C4312886D25400318331 /* Appearance.swift */; };
 		C243C4362886DA8700318331 /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C4352886DA8700318331 /* DrinkCell.swift */; };
 		C243C4392886EA7200318331 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C4382886EA7200318331 /* DrinkDetailViewController.swift */; };
+		C243C43C28874CBE00318331 /* CoctailApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C43B28874CBE00318331 /* CoctailApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92408491D5E3141989EE2620 /* Pods-coctailbar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coctailbar.release.xcconfig"; path = "Target Support Files/Pods-coctailbar/Pods-coctailbar.release.xcconfig"; sourceTree = "<group>"; };
+		9C17EAE6B1DEF433D69C8F7E /* Pods-coctailbar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coctailbar.debug.xcconfig"; path = "Target Support Files/Pods-coctailbar/Pods-coctailbar.debug.xcconfig"; sourceTree = "<group>"; };
 		C2274E9C288573C800C6A7C0 /* coctailbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coctailbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2274E9F288573C800C6A7C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2274EA1288573C800C6A7C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,11 +34,12 @@
 		C2274EAB288573CA00C6A7C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2274EAD288573CA00C6A7C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C243C4272886B50700318331 /* DrinkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkResponse.swift; sourceTree = "<group>"; };
-		C243C42C2886BDEB00318331 /* CoctailAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailAPIService.swift; sourceTree = "<group>"; };
 		C243C42F2886D1D400318331 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		C243C4312886D25400318331 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		C243C4352886DA8700318331 /* DrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCell.swift; sourceTree = "<group>"; };
 		C243C4382886EA7200318331 /* DrinkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailViewController.swift; sourceTree = "<group>"; };
+		C243C43B28874CBE00318331 /* CoctailApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailApiService.swift; sourceTree = "<group>"; };
+		FCD7D4D27BB5621E42A409A5 /* Pods_coctailbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coctailbar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				138FEB69958CCEB26FD74F65 /* Pods_coctailbar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25737B0D5611545718EB538D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C17EAE6B1DEF433D69C8F7E /* Pods-coctailbar.debug.xcconfig */,
+				92408491D5E3141989EE2620 /* Pods-coctailbar.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7132281776C49BC8B3CEA26A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCD7D4D27BB5621E42A409A5 /* Pods_coctailbar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C2274E93288573C800C6A7C0 = {
 			isa = PBXGroup;
 			children = (
 				C2274E9E288573C800C6A7C0 /* coctailbar */,
 				C2274E9D288573C800C6A7C0 /* Products */,
+				25737B0D5611545718EB538D /* Pods */,
+				7132281776C49BC8B3CEA26A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +94,7 @@
 			children = (
 				C243C4292886BC7500318331 /* Services */,
 				C243C4262886AA5E00318331 /* Model */,
+				C243C43A28874BF300318331 /* ViewModel */,
 				C243C4332886DA1500318331 /* Views */,
 				C243C42E2886D1C200318331 /* GlobalHelpers */,
 				C2274E9F288573C800C6A7C0 /* AppDelegate.swift */,
@@ -93,7 +118,7 @@
 		C243C4292886BC7500318331 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C243C42C2886BDEB00318331 /* CoctailAPIService.swift */,
+				C243C43B28874CBE00318331 /* CoctailApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -133,6 +158,13 @@
 			path = DrinkDetailView;
 			sourceTree = "<group>";
 		};
+		C243C43A28874BF300318331 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2274EB0288573CA00C6A7C0 /* Build configuration list for PBXNativeTarget "coctailbar" */;
 			buildPhases = (
+				C1C6A7F7494254D7380710CA /* [CP] Check Pods Manifest.lock */,
 				C2274E98288573C800C6A7C0 /* Sources */,
 				C2274E99288573C800C6A7C0 /* Frameworks */,
 				C2274E9A288573C800C6A7C0 /* Resources */,
+				8860D6F8C1835F3C3F387727 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,6 +233,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8860D6F8C1835F3C3F387727 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-coctailbar/Pods-coctailbar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-coctailbar/Pods-coctailbar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-coctailbar/Pods-coctailbar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1C6A7F7494254D7380710CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-coctailbar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C2274E98288573C800C6A7C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -207,11 +283,11 @@
 				C243C4282886B50700318331 /* DrinkResponse.swift in Sources */,
 				C2274EA4288573C800C6A7C0 /* ViewController.swift in Sources */,
 				C243C4362886DA8700318331 /* DrinkCell.swift in Sources */,
-				C243C42D2886BDEB00318331 /* CoctailAPIService.swift in Sources */,
 				C2274EA0288573C800C6A7C0 /* AppDelegate.swift in Sources */,
 				C243C4322886D25400318331 /* Appearance.swift in Sources */,
 				C243C4302886D1D400318331 /* UIViewExtensions.swift in Sources */,
 				C2274EA2288573C800C6A7C0 /* SceneDelegate.swift in Sources */,
+				C243C43C28874CBE00318331 /* CoctailApiService.swift in Sources */,
 				C243C4392886EA7200318331 /* DrinkDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +430,7 @@
 		};
 		C2274EB1288573CA00C6A7C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C17EAE6B1DEF433D69C8F7E /* Pods-coctailbar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -381,6 +458,7 @@
 		};
 		C2274EB2288573CA00C6A7C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92408491D5E3141989EE2620 /* Pods-coctailbar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
