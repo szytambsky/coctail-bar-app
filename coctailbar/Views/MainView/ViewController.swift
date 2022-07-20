@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     
     // MARK: - Properties
     private let drinkCellId = "drinkCellId"
+    
+    private var viewModel: DrinkListViewModel!
+    private let disposeBag = DisposeBag()
     
     private let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -24,7 +29,8 @@ class ViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = Appearance.mainBackgroundColor
         cv.delegate = self
-        cv.dataSource = self
+        // Cleared the dataSource for UICollectionViewDataSource we are using RxSwift now.
+        cv.dataSource = nil
         cv.register(DrinkCell.self, forCellWithReuseIdentifier: drinkCellId)
         return cv
     }()
@@ -33,8 +39,22 @@ class ViewController: UIViewController {
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = DrinkListViewModel(drinkApiService: DrinkApiService())
         configureLayout()
         configureProperties()
+        
+        searchController.searchBar.rx.text.asObservable()
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .map { ($0 ?? "").lowercased() }
+            .filter { !$0.isEmpty }
+            .flatMapLatest { [unowned self] term -> Observable<[Drink]> in
+                return viewModel.getDrinkViewModel(drinkName: term)
+            }
+            .bind(to: collectionView.rx.items(cellIdentifier: drinkCellId, cellType: DrinkCell.self)) {
+                index, model, cell in
+                cell.nameLabel.text = model.name
+            }.disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,20 +95,6 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let drinkDetailViewController = DrinkDetailViewController()
         navigationController?.pushViewController(drinkDetailViewController, animated: true)
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: drinkCellId, for: indexPath) as! DrinkCell
-        //cell.backgroundColor = .red
-        return cell
     }
 }
 

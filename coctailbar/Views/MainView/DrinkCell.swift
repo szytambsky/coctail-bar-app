@@ -10,7 +10,7 @@ import UIKit
 class DrinkCell: UICollectionViewCell {
     
     // MARK: - Properties
-    private let nameLabel: UILabel = {
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Sample title for product"
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
@@ -20,7 +20,7 @@ class DrinkCell: UICollectionViewCell {
         return label
     }()
     
-    private let drinkImageView: UIImageView = {
+    let drinkImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "sampleDrink")
         iv.contentMode = .scaleAspectFill

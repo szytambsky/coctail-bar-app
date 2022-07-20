@@ -14,13 +14,35 @@ struct DrinkResponse: Codable {
 
 // MARK: - Drink
 struct Drink: Codable {
-    let strDrink: String
-    let strDrinkThumb: String
     let idDrink: String
+    let name: String
+    let thumbnailUrl: String
     
     private enum CodingKeys: String, CodingKey {
-        case strDrink = "name"
-        case strDrinkThumb = "thumbnailUrl"
         case idDrink
+        case name = "strDrink"
+        case thumbnailUrl = "strDrinkThumb"
+    }
+}
+
+// MARK: - DrinkDetailsResponse
+struct DrinkDetailsResponse: Codable {
+    let drinks: [DrinkDetails]
+}
+
+// MARK: - DrinkDetails
+struct DrinkDetails: Codable {
+    let idDrink: String
+    let name: String
+    let thumbnailUrl: String
+    let glass: String
+    let strAlcoholic: String
+    let strInstructions: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case idDrink, strAlcoholic, strInstructions
+        case name = "strDrink"
+        case thumbnailUrl = "strDrinkThumb"
+        case glass = "strGlass"
     }
 }
