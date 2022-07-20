@@ -29,6 +29,10 @@ final class DrinkListViewModel {
         return drinkApiService.fetchDrinkResponse(url: URL(string: baseUrl + "/api/json/v1/1/filter.php?i=\(drinkName)")!)
     }
     
+    func getDrinkViewModelWithImage(drinkName: String) -> Observable<[DrinkViewModel]> {
+        return drinkApiService.fetchDrinkResponse(url: URL(string: baseUrl + "/api/json/v1/1/filter.php?i=\(drinkName)")!).map({ $0.map { DrinkViewModel(drink: $0) } })
+    }
+    
     func getDrinkDetails(drinkId: String) -> Observable<DrinkDetailsResponse> {
         // MARK: - TO DO unwrap safely URL
         return drinkApiService.fetchDrinks(url: URL(string: baseUrl + "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=\(drinkId)")!)

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchDrinkViewController.swift
 //  coctailbar
 //
 //  Created by Szymon Tamborski on 18/07/2022.
@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController {
+class SearchDrinkViewController: UIViewController {
     
     // MARK: - Properties
     private let drinkCellId = "drinkCellId"
@@ -29,7 +29,6 @@ class ViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = Appearance.mainBackgroundColor
         cv.delegate = self
-        // Cleared the dataSource for UICollectionViewDataSource we are using RxSwift now.
         cv.dataSource = nil
         cv.register(DrinkCell.self, forCellWithReuseIdentifier: drinkCellId)
         return cv
@@ -41,26 +40,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         viewModel = DrinkListViewModel(drinkApiService: DrinkApiService())
         configureLayout()
-        configureProperties()
-        
-        searchController.searchBar.rx.text.asObservable()
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .map { ($0 ?? "").lowercased() }
-            .filter { !$0.isEmpty }
-            .flatMapLatest { [unowned self] term -> Observable<[Drink]> in
-                return viewModel.getDrinkViewModel(drinkName: term)
-            }
-            .bind(to: collectionView.rx.items(cellIdentifier: drinkCellId, cellType: DrinkCell.self)) {
-                index, model, cell in
-                cell.nameLabel.text = model.name
-            }.disposed(by: disposeBag)
-        
-        collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
-            print(indexPath.row)
-            let drinkDetailViewController = DrinkDetailViewController()
-            self?.navigationController?.pushViewController(drinkDetailViewController, animated: true)
-        }).disposed(by: disposeBag)
+        bindCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,8 +49,6 @@ class ViewController: UIViewController {
     }
     
     // MARK: - UI
-    private func configureProperties() {
-    }
     
     private func configureLayout() {
         view.backgroundColor = Appearance.mainBackgroundColor
@@ -90,13 +68,36 @@ class ViewController: UIViewController {
                               paddingRight: 16)
     }
     
-    // MARK: - Services
+    // MARK: - Bind CollectionView
+    func bindCollectionView() {
+        searchController.searchBar.rx.text.asObservable()
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .map { ($0 ?? "").lowercased() }
+            .filter { !$0.isEmpty }
+            .flatMapLatest { [unowned self] term -> Observable<[DrinkViewModel]> in
+                return viewModel.getDrinkViewModelWithImage(drinkName: term)
+            }
+            .bind(to: collectionView.rx.items(cellIdentifier: drinkCellId, cellType: DrinkCell.self)) {
+                index, model, cell in
+                cell.nameLabel.text = model.drinkName
+                if let imageData = model.setImageWithUrl() {
+                    cell.drinkImageView.image = UIImage(data: imageData)
+                }
+            }.disposed(by: disposeBag)
+        
+        collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            print(indexPath.row)
+            let drinkDetailViewController = DrinkDetailViewController()
+            self?.navigationController?.pushViewController(drinkDetailViewController, animated: true)
+        }).disposed(by: disposeBag)
+    }
     
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension SearchDrinkViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: ((collectionView.frame.width / 2) - Appearance.drinkCellPaddingBetween), height: 200)
     }
