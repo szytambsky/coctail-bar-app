@@ -55,6 +55,12 @@ class ViewController: UIViewController {
                 index, model, cell in
                 cell.nameLabel.text = model.name
             }.disposed(by: disposeBag)
+        
+        collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            print(indexPath.row)
+            let drinkDetailViewController = DrinkDetailViewController()
+            self?.navigationController?.pushViewController(drinkDetailViewController, animated: true)
+        }).disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,16 +92,6 @@ class ViewController: UIViewController {
     
     // MARK: - Services
     
-}
-
-
-// MARK: -UICollectionViewDelegate
-
-extension ViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let drinkDetailViewController = DrinkDetailViewController()
-        navigationController?.pushViewController(drinkDetailViewController, animated: true)
-    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
