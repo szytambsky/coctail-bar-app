@@ -5,8 +5,9 @@ An Application that allows you to find your favourite drink/coctail based on the
 
 ### Technologies
 
-MVVM architecture with coordinators pattern to decouple concrete controllers.
-Data source via rest api server: https://www.thecocktaildb.com/api.php
+MVVM architecture with coordinators pattern to decouple concrete controllers. 
+Third party libraries: RxSwift.
+Data source via rest api server: https://www.thecocktaildb.com/api.php 
 
 ---
 
@@ -15,6 +16,6 @@ Data source via rest api server: https://www.thecocktaildb.com/api.php
 - Make a class that builds URLRequest in more composable way (RequestType, path, parameters, queryItems).
 - Handle returning empty response with some placeholder view.
 - Async image downloading and caching.
-- Improve UI components. 
+- Improve UI components e.g. dynamic parent view resizing based on its children sizes.
 - etc
 
