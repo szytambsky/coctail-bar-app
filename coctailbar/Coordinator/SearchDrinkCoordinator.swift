@@ -24,9 +24,10 @@ final class SearchDrinkCoordinator: Coordinator {
         navigationController.setViewControllers([searchDrinkViewController], animated: false)
     }
     
-    func showDrinkDetailView() {
+    func showDrinkDetailView(id: String) {
         let drinkDetailCoordinator = DrinkDetailCoordinator(navigationController: navigationController)
         drinkDetailCoordinator.parentCoordinator = self
+        drinkDetailCoordinator.id = id
         childCoordinators.append(drinkDetailCoordinator)
         print("DEBUG: SearchDrinkCoordinator -> drinkDetailCoordinator.start()")
         drinkDetailCoordinator.start()

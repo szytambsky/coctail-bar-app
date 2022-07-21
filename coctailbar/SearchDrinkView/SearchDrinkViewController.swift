@@ -38,7 +38,6 @@ class SearchDrinkViewController: UIViewController {
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        //viewModel = DrinkListViewModel(drinkApiService: DrinkApiService())
         configureLayout()
         bindCollectionView()
     }
@@ -85,8 +84,27 @@ class SearchDrinkViewController: UIViewController {
                     cell.drinkImageView.image = UIImage(data: imageData)
                 }
             }.disposed(by: disposeBag)
+        
+        collectionView.rx
+            .modelAndIndexSelected(DrinkViewModel.self)
+            .subscribe(onNext: { (model, indexPath) in
+                print("DEBUG: id from model drink \(model.idDrink)")
+                print("DEBUG: index from item selected \(indexPath.item)")
+                self.viewModel.pushDetailView(id: model.idDrink)
+            }).disposed(by: disposeBag)
     }
     
+}
+
+// MARK: - Reactive proxy zip
+/// Function that makes an  zipping from events on UI rx  components
+extension Reactive where Base: UICollectionView {
+    public func modelAndIndexSelected<T>(_ modelType: T.Type) -> ControlEvent<(T, IndexPath)> {
+        ControlEvent(events: Observable.zip(
+            self.modelSelected(modelType),
+            self.itemSelected
+        ))
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

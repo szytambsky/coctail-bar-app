@@ -14,6 +14,7 @@ final class DrinkDetailCoordinator: Coordinator {
     private let navigationController: UINavigationController
     
     var parentCoordinator: SearchDrinkCoordinator?
+    var id: String?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,6 +22,7 @@ final class DrinkDetailCoordinator: Coordinator {
     
     func start() {
         let drinkDetailViewController = DrinkDetailViewController()
+        drinkDetailViewController.id = id
         let drinkDetailViewModel = DrinkDetailViewModel(drinkApiService: DrinkApiService())
         drinkDetailViewModel.coordinator = self
         drinkDetailViewController.viewModel = drinkDetailViewModel

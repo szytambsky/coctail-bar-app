@@ -12,7 +12,9 @@ final class DrinkDetailViewModel {
     
     // MARK: - Properties
     private let drinkApiService: DrinkApiService
-    private let baseUrl = "https://www.thecocktaildb.com/"
+    
+    // MARK: - TO DO, On production we have to make a class that builds this url request for us in more composable way
+    private let baseUrl = "https://www.thecocktaildb.com"
     var coordinator: DrinkDetailCoordinator?
     
     init(drinkApiService: DrinkApiService) {
@@ -25,8 +27,10 @@ final class DrinkDetailViewModel {
     }
     
     // MARK: - Methods related to DetailApiService
-    func getDrinkDetails(drinkId: String) -> Observable<DrinkDetailsResponse> {
+    func getDrinkDetails(drinkId: String) -> Observable<DrinkDetails> {
         // MARK: - TO DO unwrap safely URL
-        return drinkApiService.fetchDrinks(url: URL(string: baseUrl + "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=\(drinkId)")!)
+        let drinkDetailsResponse = drinkApiService.fetchDrinkDetailsResponse(url: URL(string: baseUrl + "/api/json/v1/1/lookup.php?i=\(drinkId)")!)
+        print(drinkDetailsResponse)
+        return drinkDetailsResponse
     }
 }

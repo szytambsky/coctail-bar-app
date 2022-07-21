@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DrinkDetailViewController: UIViewController {
 
     // MARK: - Properties
     var viewModel: DrinkDetailViewModel!
+    var id: String?
+    
+    private let disposeBag = DisposeBag()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +38,7 @@ class DrinkDetailViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //viewModel = DrinkDetailViewModel(drinkApiService: DrinkApiService())
+        
         configureUI()
         drinkDetailsBinding()
     }
@@ -72,6 +77,12 @@ class DrinkDetailViewController: UIViewController {
     // MARK: - Binding
     
     func drinkDetailsBinding() {
+        guard let drinkId = id else { return }
         
+        viewModel.getDrinkDetails(drinkId: drinkId)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] item in
+                self.nameLabel.text = item.name
+            }).disposed(by: disposeBag)
     }
 }
