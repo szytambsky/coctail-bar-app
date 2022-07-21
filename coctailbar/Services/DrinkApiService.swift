@@ -28,7 +28,6 @@ final class DrinkApiService: DrinkApiServiceProtocol {
                 do {
                     let drinks = try JSONDecoder().decode(T.self, from: data)
                     observer.onNext(drinks)
-                    // MARK: - TO DO delete or stay here
                     observer.onCompleted()
                 } catch(let error) {
                     observer.onError(error)
@@ -56,7 +55,7 @@ final class DrinkApiService: DrinkApiServiceProtocol {
                     observer.onNext(drinkResponse.drinks)
                     observer.onCompleted()
                 } catch(let error) {
-                    // MARK: - TO DO: Handle returning Void on completion from blank response f.e NoResultsView
+                    // MARK: - TO DO: Handle returning Void - Lack of Results UI
                     print(error)
                     //observer.onError(error)
                 }

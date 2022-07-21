@@ -18,6 +18,11 @@ final class DrinkViewModel {
         return drink.name
     }
     
+    var idDrink: String {
+        return drink.idDrink
+    }
+    
+    // F.g. Kingfisher, Nuke or SDWebImage instead
     func setImageWithUrl() -> Data? {
         let url = URL(string: drink.thumbnailUrl)
         let data = try? Data(contentsOf: url!)

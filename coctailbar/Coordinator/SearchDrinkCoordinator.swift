@@ -18,10 +18,27 @@ final class SearchDrinkCoordinator: Coordinator {
     
     func start() {
         let searchDrinkViewController = SearchDrinkViewController()
-        
-        // Set root ViewController in our navigationController
+        let drinkListViewModel = DrinkListViewModel(drinkApiService: DrinkApiService())
+        drinkListViewModel.coordinator = self
+        searchDrinkViewController.viewModel = drinkListViewModel
         navigationController.setViewControllers([searchDrinkViewController], animated: false)
     }
     
+    func showDrinkDetailView() {
+        let drinkDetailCoordinator = DrinkDetailCoordinator(navigationController: navigationController)
+        drinkDetailCoordinator.parentCoordinator = self
+        childCoordinators.append(drinkDetailCoordinator)
+        print("DEBUG: SearchDrinkCoordinator -> drinkDetailCoordinator.start()")
+        drinkDetailCoordinator.start()
+    }
+    
+    // Remove reference to child so it could be deallocated
+    func childDidFinish(_ childCoordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { coordinator -> Bool in
+            return childCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
+    }
     
 }

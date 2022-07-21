@@ -14,7 +14,7 @@ class SearchDrinkViewController: UIViewController {
     // MARK: - Properties
     private let drinkCellId = "drinkCellId"
     
-    private var viewModel: DrinkListViewModel!
+    var viewModel: DrinkListViewModel!
     private let disposeBag = DisposeBag()
     
     private let searchController: UISearchController = {
@@ -38,7 +38,7 @@ class SearchDrinkViewController: UIViewController {
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = DrinkListViewModel(drinkApiService: DrinkApiService())
+        //viewModel = DrinkListViewModel(drinkApiService: DrinkApiService())
         configureLayout()
         bindCollectionView()
     }
@@ -71,7 +71,7 @@ class SearchDrinkViewController: UIViewController {
     // MARK: - Bind CollectionView
     func bindCollectionView() {
         searchController.searchBar.rx.text.asObservable()
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(400), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .map { ($0 ?? "").lowercased() }
             .filter { !$0.isEmpty }
@@ -85,12 +85,6 @@ class SearchDrinkViewController: UIViewController {
                     cell.drinkImageView.image = UIImage(data: imageData)
                 }
             }.disposed(by: disposeBag)
-        
-        collectionView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
-            print(indexPath.row)
-            let drinkDetailViewController = DrinkDetailViewController()
-            self?.navigationController?.pushViewController(drinkDetailViewController, animated: true)
-        }).disposed(by: disposeBag)
     }
     
 }

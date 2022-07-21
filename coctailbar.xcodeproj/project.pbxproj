@@ -25,6 +25,8 @@
 		C25CAA722888591200BD51A6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25CAA712888591200BD51A6 /* AppCoordinator.swift */; };
 		C25CAA7428886E1600BD51A6 /* SearchDrinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25CAA7328886E1600BD51A6 /* SearchDrinkCoordinator.swift */; };
 		C25CAA762888758900BD51A6 /* DrinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25CAA752888758900BD51A6 /* DrinkViewModel.swift */; };
+		C25CAA78288899B900BD51A6 /* DrinkDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25CAA77288899B900BD51A6 /* DrinkDetailViewModel.swift */; };
+		C25CAA7A28889E4C00BD51A6 /* DrinkDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25CAA7928889E4C00BD51A6 /* DrinkDetailCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		C25CAA712888591200BD51A6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C25CAA7328886E1600BD51A6 /* SearchDrinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDrinkCoordinator.swift; sourceTree = "<group>"; };
 		C25CAA752888758900BD51A6 /* DrinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewModel.swift; sourceTree = "<group>"; };
+		C25CAA77288899B900BD51A6 /* DrinkDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailViewModel.swift; sourceTree = "<group>"; };
+		C25CAA7928889E4C00BD51A6 /* DrinkDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailCoordinator.swift; sourceTree = "<group>"; };
 		FCD7D4D27BB5621E42A409A5 /* Pods_coctailbar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coctailbar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -158,6 +162,7 @@
 			children = (
 				C2274EA3288573C800C6A7C0 /* SearchDrinkViewController.swift */,
 				C243C4352886DA8700318331 /* DrinkCell.swift */,
+				C243C43D28874DCA00318331 /* DrinkListViewModel.swift */,
 			);
 			path = SearchDrinkView;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				C243C4382886EA7200318331 /* DrinkDetailViewController.swift */,
+				C25CAA77288899B900BD51A6 /* DrinkDetailViewModel.swift */,
 			);
 			path = DrinkDetailView;
 			sourceTree = "<group>";
@@ -174,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				C25CAA752888758900BD51A6 /* DrinkViewModel.swift */,
-				C243C43D28874DCA00318331 /* DrinkListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			children = (
 				C25CAA712888591200BD51A6 /* AppCoordinator.swift */,
 				C25CAA7328886E1600BD51A6 /* SearchDrinkCoordinator.swift */,
+				C25CAA7928889E4C00BD51A6 /* DrinkDetailCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -309,12 +315,14 @@
 				C2274EA4288573C800C6A7C0 /* SearchDrinkViewController.swift in Sources */,
 				C243C4362886DA8700318331 /* DrinkCell.swift in Sources */,
 				C25CAA762888758900BD51A6 /* DrinkViewModel.swift in Sources */,
+				C25CAA7A28889E4C00BD51A6 /* DrinkDetailCoordinator.swift in Sources */,
 				C25CAA6F28882E0400BD51A6 /* Notes.swift in Sources */,
 				C243C43E28874DCA00318331 /* DrinkListViewModel.swift in Sources */,
 				C2274EA0288573C800C6A7C0 /* AppDelegate.swift in Sources */,
 				C243C4322886D25400318331 /* Appearance.swift in Sources */,
 				C25CAA7428886E1600BD51A6 /* SearchDrinkCoordinator.swift in Sources */,
 				C243C4302886D1D400318331 /* UIViewExtensions.swift in Sources */,
+				C25CAA78288899B900BD51A6 /* DrinkDetailViewModel.swift in Sources */,
 				C2274EA2288573C800C6A7C0 /* SceneDelegate.swift in Sources */,
 				C243C4392886EA7200318331 /* DrinkDetailViewController.swift in Sources */,
 			);
