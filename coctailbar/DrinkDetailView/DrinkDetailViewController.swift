@@ -82,7 +82,10 @@ class DrinkDetailViewController: UIViewController {
         viewModel.getDrinkDetails(drinkId: drinkId)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] item in
-                self.nameLabel.text = item.name
+                self.nameLabel.text = item.drinkName
+                if let imageData = item.setImageWithUrl() {
+                    self.drinkImageView.image = UIImage(data: imageData)
+                }
             }).disposed(by: disposeBag)
     }
 }

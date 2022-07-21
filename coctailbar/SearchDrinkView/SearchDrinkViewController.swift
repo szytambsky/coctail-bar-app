@@ -74,7 +74,7 @@ class SearchDrinkViewController: UIViewController {
             .distinctUntilChanged()
             .map { ($0 ?? "").lowercased() }
             .filter { !$0.isEmpty }
-            .flatMapLatest { [unowned self] term -> Observable<[DrinkViewModel]> in
+            .flatMapLatest { [unowned self] term -> Observable<[DrinkMappedViewModel]> in
                 return viewModel.getDrinkViewModelWithImage(drinkName: term)
             }
             .bind(to: collectionView.rx.items(cellIdentifier: drinkCellId, cellType: DrinkCell.self)) {
@@ -86,7 +86,7 @@ class SearchDrinkViewController: UIViewController {
             }.disposed(by: disposeBag)
         
         collectionView.rx
-            .modelAndIndexSelected(DrinkViewModel.self)
+            .modelAndIndexSelected(DrinkMappedViewModel.self)
             .subscribe(onNext: { (model, indexPath) in
                 print("DEBUG: id from model drink \(model.idDrink)")
                 print("DEBUG: index from item selected \(indexPath.item)")

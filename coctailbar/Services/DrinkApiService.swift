@@ -55,7 +55,7 @@ final class DrinkApiService: DrinkApiServiceProtocol {
                 
                 do {
                     let drinkResponse = try JSONDecoder().decode(DrinkDetailsResponse.self, from: data)
-                    print("DEBUG: decoded response name: \(String(describing: drinkResponse.drinks.first?.idDrink))")
+
                     observer.onNext(drinkResponse.drinks.first!)
                     observer.onCompleted()
                 } catch(let error) {

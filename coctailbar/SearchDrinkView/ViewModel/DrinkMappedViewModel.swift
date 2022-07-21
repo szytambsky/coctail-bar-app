@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DrinkViewModel {
+final class DrinkMappedViewModel {
     private var drink: Drink
     
     init(drink: Drink) {

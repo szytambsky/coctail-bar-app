@@ -28,8 +28,8 @@ final class DrinkListViewModel {
     }
     
     // MARK: - Methods related to DetailApiService
-    func getDrinkViewModelWithImage(drinkName: String) -> Observable<[DrinkViewModel]> {
+    func getDrinkViewModelWithImage(drinkName: String) -> Observable<[DrinkMappedViewModel]> {
         // MARK: - TO DO unwrap safely URL
-        return drinkApiService.fetchDrinkResponse(url: URL(string: baseUrl + "/api/json/v1/1/filter.php?i=\(drinkName)")!).map({ $0.map { DrinkViewModel(drink: $0) } })
+        return drinkApiService.fetchDrinkResponse(url: URL(string: baseUrl + "/api/json/v1/1/filter.php?i=\(drinkName)")!).map({ $0.map { DrinkMappedViewModel(drink: $0) } })
     }
 }

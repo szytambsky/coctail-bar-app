@@ -27,9 +27,9 @@ final class DrinkDetailViewModel {
     }
     
     // MARK: - Methods related to DetailApiService
-    func getDrinkDetails(drinkId: String) -> Observable<DrinkDetails> {
+    func getDrinkDetails(drinkId: String) -> Observable<DrinkDetailMappedViewModel> {//Observable<DrinkDetails> {
         // MARK: - TO DO unwrap safely URL
-        let drinkDetailsResponse = drinkApiService.fetchDrinkDetailsResponse(url: URL(string: baseUrl + "/api/json/v1/1/lookup.php?i=\(drinkId)")!)
+        let drinkDetailsResponse = drinkApiService.fetchDrinkDetailsResponse(url: URL(string: baseUrl + "/api/json/v1/1/lookup.php?i=\(drinkId)")!).map({ DrinkDetailMappedViewModel(drink: $0) })
         print(drinkDetailsResponse)
         return drinkDetailsResponse
     }
