@@ -20,8 +20,7 @@ class DrinkDetailViewController: UIViewController {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Sample title for product"
-        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        //label.backgroundColor = .green
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.numberOfLines = 0
         label.textColor = .black
         return label
@@ -33,6 +32,24 @@ class DrinkDetailViewController: UIViewController {
         iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
         return iv
+    }()
+    
+    private let instructionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Sample instruction for product"
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        label.numberOfLines = 0
+        label.textColor = .darkGray
+        return label
+    }()
+    
+    private let topContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = Appearance.drinkDetailContainerRadius
+        view.contentMode = .scaleAspectFill
+        view.layer.masksToBounds = true
+        return view
     }()
     
     // MARK: - Lifecycle
@@ -53,7 +70,23 @@ class DrinkDetailViewController: UIViewController {
         super.viewDidDisappear(animated)
         viewModel.viewDisappear()
     }
-
+    
+    // MARK: - UI Binding
+    
+    func drinkDetailsBinding() {
+        guard let drinkId = id else { return }
+        
+        viewModel.getDrinkDetails(drinkId: drinkId)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] item in
+                self.nameLabel.text = item.drinkName
+                self.instructionLabel.text = item.drinkInstruction
+                if let imageData = item.setImageWithUrl() {
+                    self.drinkImageView.image = UIImage(data: imageData)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
     // MARK: - UI
     func configureUI() {
         view.backgroundColor = Appearance.mainBackgroundColor
@@ -67,25 +100,26 @@ class DrinkDetailViewController: UIViewController {
                               paddingRight: 0,
                               height: 250)
         
-        view.addSubview(nameLabel)
-        nameLabel.centerX(inView: self.view)
-        nameLabel.anchor(top: drinkImageView.bottomAnchor,
-                         paddingTop: 4,
-                         width: self.view.frame.width - Appearance.drinkCellLabelPadding)
-    }
-    
-    // MARK: - Binding
-    
-    func drinkDetailsBinding() {
-        guard let drinkId = id else { return }
         
-        viewModel.getDrinkDetails(drinkId: drinkId)
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [unowned self] item in
-                self.nameLabel.text = item.drinkName
-                if let imageData = item.setImageWithUrl() {
-                    self.drinkImageView.image = UIImage(data: imageData)
-                }
-            }).disposed(by: disposeBag)
+        // MARK: - TO DO Dynamic height of parent view depends on child views
+        view.addSubview(topContainer)
+        topContainer.centerX(inView: self.view)
+        topContainer.anchor(top: drinkImageView.bottomAnchor,
+                            paddingTop: 4,
+                            width: self.view.frame.width - Appearance.drinkDetailViewPadding,
+                            height: 130)
+        
+        topContainer.addSubview(nameLabel)
+        nameLabel.centerX(inView: self.view)
+        nameLabel.anchor(top: topContainer.topAnchor,
+                         paddingTop: 8,
+                         width: self.view.frame.width - Appearance.drinkDetailViewPadding * 2)
+        
+        topContainer.addSubview(instructionLabel)
+        instructionLabel.centerX(inView: self.view)
+        instructionLabel.anchor(top: nameLabel.bottomAnchor,
+                                paddingTop: 8,
+                                width: self.view.frame.width - Appearance.drinkDetailViewPadding * 2)
+        
     }
 }

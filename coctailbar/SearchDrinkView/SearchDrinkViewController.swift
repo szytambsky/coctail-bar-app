@@ -88,8 +88,6 @@ class SearchDrinkViewController: UIViewController {
         collectionView.rx
             .modelAndIndexSelected(DrinkMappedViewModel.self)
             .subscribe(onNext: { (model, indexPath) in
-                print("DEBUG: id from model drink \(model.idDrink)")
-                print("DEBUG: index from item selected \(indexPath.item)")
                 self.viewModel.pushDetailView(id: model.idDrink)
             }).disposed(by: disposeBag)
     }

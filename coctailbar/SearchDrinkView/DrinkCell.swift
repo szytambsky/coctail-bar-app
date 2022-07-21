@@ -43,7 +43,7 @@ class DrinkCell: UICollectionViewCell {
     // MARK: - UI
     func configureUI() {
         layer.cornerRadius = Appearance.drinkCellRadius
-        backgroundColor = Appearance.mainBackgroundColor
+        backgroundColor = UIColor.white
         
         addSubview(drinkImageView)
         drinkImageView.centerX(inView: self)

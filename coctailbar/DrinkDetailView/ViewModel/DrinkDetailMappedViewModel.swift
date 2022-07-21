@@ -22,6 +22,10 @@ final class DrinkDetailMappedViewModel {
         return drink.idDrink
     }
     
+    var drinkInstruction: String {
+        return drink.strInstructions
+    }
+    
     // F.g. Kingfisher, Nuke or SDWebImage instead
     func setImageWithUrl() -> Data? {
         let url = URL(string: drink.thumbnailUrl)
