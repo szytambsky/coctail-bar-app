@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		138FEB69958CCEB26FD74F65 /* Pods_coctailbar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD7D4D27BB5621E42A409A5 /* Pods_coctailbar.framework */; };
+		C21CF47A28928F570007440C /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21CF47928928F570007440C /* ApiError.swift */; };
 		C2274EA0288573C800C6A7C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2274E9F288573C800C6A7C0 /* AppDelegate.swift */; };
 		C2274EA2288573C800C6A7C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2274EA1288573C800C6A7C0 /* SceneDelegate.swift */; };
 		C2274EA4288573C800C6A7C0 /* SearchDrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2274EA3288573C800C6A7C0 /* SearchDrinkViewController.swift */; };
@@ -21,6 +22,8 @@
 		C243C4392886EA7200318331 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C4382886EA7200318331 /* DrinkDetailViewController.swift */; };
 		C243C43E28874DCA00318331 /* DrinkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C43D28874DCA00318331 /* DrinkListViewModel.swift */; };
 		C243C4402887581700318331 /* DrinkApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243C43F2887581700318331 /* DrinkApiService.swift */; };
+		C25078D9289188E0006EE9B8 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25078D8289188E0006EE9B8 /* ImageCache.swift */; };
+		C25078DB2891AD9A006EE9B8 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25078DA2891AD9A006EE9B8 /* ImageLoader.swift */; };
 		C25CAA6F28882E0400BD51A6 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25CAA6E28882E0400BD51A6 /* Notes.swift */; };
 		C25CAA722888591200BD51A6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25CAA712888591200BD51A6 /* AppCoordinator.swift */; };
 		C25CAA7428886E1600BD51A6 /* SearchDrinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25CAA7328886E1600BD51A6 /* SearchDrinkCoordinator.swift */; };
@@ -33,6 +36,7 @@
 /* Begin PBXFileReference section */
 		92408491D5E3141989EE2620 /* Pods-coctailbar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coctailbar.release.xcconfig"; path = "Target Support Files/Pods-coctailbar/Pods-coctailbar.release.xcconfig"; sourceTree = "<group>"; };
 		9C17EAE6B1DEF433D69C8F7E /* Pods-coctailbar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coctailbar.debug.xcconfig"; path = "Target Support Files/Pods-coctailbar/Pods-coctailbar.debug.xcconfig"; sourceTree = "<group>"; };
+		C21CF47928928F570007440C /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		C2274E9C288573C800C6A7C0 /* coctailbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coctailbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2274E9F288573C800C6A7C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2274EA1288573C800C6A7C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		C243C4382886EA7200318331 /* DrinkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailViewController.swift; sourceTree = "<group>"; };
 		C243C43D28874DCA00318331 /* DrinkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListViewModel.swift; sourceTree = "<group>"; };
 		C243C43F2887581700318331 /* DrinkApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkApiService.swift; sourceTree = "<group>"; };
+		C25078D8289188E0006EE9B8 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		C25078DA2891AD9A006EE9B8 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		C25CAA6E28882E0400BD51A6 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		C25CAA712888591200BD51A6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C25CAA7328886E1600BD51A6 /* SearchDrinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDrinkCoordinator.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 		C2274E9E288573C800C6A7C0 /* coctailbar */ = {
 			isa = PBXGroup;
 			children = (
+				C25078D528916D4B006EE9B8 /* ImageLoader */,
 				C25CAA70288856ED00BD51A6 /* Coordinator */,
 				C243C4262886AA5E00318331 /* Model */,
 				C243C4342886DA2000318331 /* SearchDrinkView */,
@@ -137,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				C243C43F2887581700318331 /* DrinkApiService.swift */,
+				C21CF47928928F570007440C /* ApiError.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -167,6 +175,15 @@
 				C2C3429228895DEF00075935 /* ViewModel */,
 			);
 			path = DrinkDetailView;
+			sourceTree = "<group>";
+		};
+		C25078D528916D4B006EE9B8 /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				C25078D8289188E0006EE9B8 /* ImageCache.swift */,
+				C25078DA2891AD9A006EE9B8 /* ImageLoader.swift */,
+			);
+			path = ImageLoader;
 			sourceTree = "<group>";
 		};
 		C25CAA70288856ED00BD51A6 /* Coordinator */ = {
@@ -321,9 +338,12 @@
 				C25CAA7A28889E4C00BD51A6 /* DrinkDetailCoordinator.swift in Sources */,
 				C25CAA6F28882E0400BD51A6 /* Notes.swift in Sources */,
 				C243C43E28874DCA00318331 /* DrinkListViewModel.swift in Sources */,
+				C25078D9289188E0006EE9B8 /* ImageCache.swift in Sources */,
 				C2274EA0288573C800C6A7C0 /* AppDelegate.swift in Sources */,
 				C243C4322886D25400318331 /* Appearance.swift in Sources */,
 				C25CAA7428886E1600BD51A6 /* SearchDrinkCoordinator.swift in Sources */,
+				C21CF47A28928F570007440C /* ApiError.swift in Sources */,
+				C25078DB2891AD9A006EE9B8 /* ImageLoader.swift in Sources */,
 				C243C4302886D1D400318331 /* UIViewExtensions.swift in Sources */,
 				C25CAA78288899B900BD51A6 /* DrinkDetailViewModel.swift in Sources */,
 				C2274EA2288573C800C6A7C0 /* SceneDelegate.swift in Sources */,

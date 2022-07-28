@@ -11,13 +11,13 @@ import RxSwift
 final class DrinkDetailViewModel {
     
     // MARK: - Properties
-    private let drinkApiService: DrinkApiService
+    private let drinkApiService: DrinkApiServiceProtocol
     
     // MARK: - TO DO, On production we have to make a class that builds this url request for us in more composable way
     private let baseUrl = "https://www.thecocktaildb.com"
     var coordinator: DrinkDetailCoordinator?
     
-    init(drinkApiService: DrinkApiService) {
+    init(drinkApiService: DrinkApiServiceProtocol = DrinkApiService()) {
         self.drinkApiService = drinkApiService
     }
     

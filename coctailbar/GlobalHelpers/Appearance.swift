@@ -18,3 +18,12 @@ class Appearance {
     
     static let mainBackgroundColor: UIColor = UIColor(named: "mainBackground")!
 }
+
+
+// MARK: - CacheConfig
+
+/// Fixed maximum allowed cost of memory and number of objects in NSCache.
+struct CacheConfig {
+    static let countLimit: Int = 100
+    static let memoryLimit: Int = 1024 * 1024 * 100 // 100 MB
+}

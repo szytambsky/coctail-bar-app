@@ -26,7 +26,7 @@ class DrinkDetailViewController: UIViewController {
         return label
     }()
     
-    private let drinkImageView: UIImageView = {
+    private lazy var drinkImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "sampleDrink")
         iv.contentMode = .scaleAspectFill
@@ -81,10 +81,21 @@ class DrinkDetailViewController: UIViewController {
             .subscribe(onNext: { [unowned self] item in
                 self.nameLabel.text = item.drinkName
                 self.instructionLabel.text = item.drinkInstruction
-                if let imageData = item.setImageWithUrl() {
-                    self.drinkImageView.image = UIImage(data: imageData)
-                }
+
+                // MARK: - TO DO: Refactor nested subscribing
+                guard let url = URL(string: item.drinkThumbnailUrlString) else { return }
+                let uiImageDriver = ImageLoader.shared.rx_image(from: url)
+                self.handleDriver(uiImageDriver)
+                
             }).disposed(by: disposeBag)
+    }
+    
+    private func handleDriver(_ driver: Driver<UIImage?>) {
+        driver.asObservable()
+            .bind { [weak self] image in
+                guard let image = image else { return }
+                self?.drinkImageView.image = image
+            }.disposed(by: disposeBag)
     }
     
     // MARK: - UI

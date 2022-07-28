@@ -77,12 +77,16 @@ class SearchDrinkViewController: UIViewController {
             .flatMapLatest { [unowned self] term -> Observable<[DrinkMappedViewModel]> in
                 return viewModel.getDrinkViewModelWithImage(drinkName: term)
             }
-            .bind(to: collectionView.rx.items(cellIdentifier: drinkCellId, cellType: DrinkCell.self)) {
+            .bind(to: collectionView.rx.items(cellIdentifier: drinkCellId, cellType: DrinkCell.self)) { [weak self]
                 index, model, cell in
+                
                 cell.nameLabel.text = model.drinkName
-                if let imageData = model.setImageWithUrl() {
-                    cell.drinkImageView.image = UIImage(data: imageData)
-                }
+                
+                // MARK: - TO DO: Refactor nested subscribing
+                guard let url = URL(string: model.drinkThumbnailUrlString) else { return }
+                let uiImageDriver = ImageLoader.shared.rx_image(from: url)
+                self?.handleDriver(uiImageDriver, cell: cell)
+                
             }.disposed(by: disposeBag)
         
         collectionView.rx
@@ -90,6 +94,14 @@ class SearchDrinkViewController: UIViewController {
             .subscribe(onNext: { (model, indexPath) in
                 self.viewModel.pushDetailView(id: model.idDrink)
             }).disposed(by: disposeBag)
+    }
+    
+    private func handleDriver(_ driver: Driver<UIImage?>, cell: DrinkCell) {
+        driver.asObservable()
+            .bind { image in
+                guard let image = image else { return }
+                cell.drinkImageView.image = image
+            }.disposed(by: disposeBag)
     }
     
 }

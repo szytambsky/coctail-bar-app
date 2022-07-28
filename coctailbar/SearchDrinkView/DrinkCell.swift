@@ -22,7 +22,7 @@ class DrinkCell: UICollectionViewCell {
     
     let drinkImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "sampleDrink")
+        //iv.image = UIImage(named: "sampleDrink")
         iv.contentMode = .scaleAspectFill
         iv.layer.cornerRadius = Appearance.drinkCellRadius / 2
         iv.layer.masksToBounds = true

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class DrinkDetailMappedViewModel {
     private var drink: DrinkDetails
@@ -22,14 +23,11 @@ final class DrinkDetailMappedViewModel {
         return drink.idDrink
     }
     
-    var drinkInstruction: String {
-        return drink.strInstructions
+    var drinkThumbnailUrlString: String {
+        return drink.thumbnailUrl
     }
     
-    // F.g. Kingfisher, Nuke or SDWebImage instead
-    func setImageWithUrl() -> Data? {
-        let url = URL(string: drink.thumbnailUrl)
-        let data = try? Data(contentsOf: url!)
-        return data
+    var drinkInstruction: String {
+        return drink.strInstructions
     }
 }
